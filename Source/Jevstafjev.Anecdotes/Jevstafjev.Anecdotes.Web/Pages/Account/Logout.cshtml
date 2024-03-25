@@ -1,0 +1,18 @@
+﻿@page
+@model Jevstafjev.Anecdotes.Web.Pages.Account.LogoutModel
+@{
+    ViewBag.Title = "Logout";
+}
+
+@if (User.Identity!.IsAuthenticated)
+{
+    <h1>Are you sure you want to logout?</h1>
+    <form method="post">
+        <div asp-validation-summary="All"></div>
+        <button type="submit" class="btn btn-outline-secondary">Logout</button>
+    </form>
+}
+else
+{
+    <p>You have successfully logged out of the application.</p>
+}
