@@ -5,3 +5,6 @@ This repository contains an ASP.NET application for managing and sharing anecdot
 
 ## Blazor app
 [Anecdotes-Client](https://github.com/Roman-Jevstafjev/Anecdotes-Client) is a Blazor WebAssembly application that uses this project.
+
+## Discord bot
+[Anecdote-Bot](https://github.com/Roman-Jevstafjev/Anecdote-Bot) is a discord bot that returns anecdotes and uses this project.
