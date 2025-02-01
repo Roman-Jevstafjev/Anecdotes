@@ -6,11 +6,11 @@ namespace Jevstafjev.Anecdotes.Web.Application.Services
 {
     public class TagService(IUnitOfWork unitOfWork) : ITagService
     {
-        public async Task<AssignTagsResult> AssignTagsAsync(Anecdote anecdote, List<string> tags)
+        public async Task<TagsAdditionResult> AddTagsAsync(Anecdote anecdote, List<string> tags)
         {
             if (tags.Count > 8)
             {
-                return new AssignTagsResult(new ArgumentException("Anecdote must have less than 8 tags"));
+                return new TagsAdditionResult(new ArgumentException("Anecdote must have less than 8 tags"));
             }
 
             var anecdoteRepository = unitOfWork.GetRepository<Anecdote>();
@@ -72,7 +72,7 @@ namespace Jevstafjev.Anecdotes.Web.Application.Services
                 anecdote.Tags!.Add(newTag);
             }
 
-            return new AssignTagsResult(toCreate, toDelete);
+            return new TagsAdditionResult(toCreate, toDelete);
         }
     }
 }

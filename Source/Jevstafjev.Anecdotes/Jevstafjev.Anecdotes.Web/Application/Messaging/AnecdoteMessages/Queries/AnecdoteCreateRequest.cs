@@ -21,12 +21,12 @@ namespace Jevstafjev.Anecdotes.Web.Application.Messaging.AnecdoteMessages.Querie
 
             var entity = mapper.Map<Anecdote>(request.Model, o => o.Items[nameof(ApplicationUser)] = request.User.Identity!.Name);
 
-            var assignResult = await tagService.AssignTagsAsync(
+            var additionResult = await tagService.AddTagsAsync(
                 entity,
                 request.Model.Tags.Split(new[] { ',', ' ', ';' }, StringSplitOptions.RemoveEmptyEntries).ToList());
-            if (!assignResult.IsSuccess)
+            if (!additionResult.IsSuccess)
             {
-                return Result.Invalid(new ValidationError(assignResult.Exception!.Message));
+                return Result.Invalid(new ValidationError(additionResult.Exception!.Message));
             }
 
             await repository.InsertAsync(entity);

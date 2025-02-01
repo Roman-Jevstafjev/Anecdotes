@@ -4,18 +4,18 @@ namespace Jevstafjev.Anecdotes.Web.Application.Services
 {
     public interface ITagService
     {
-        Task<AssignTagsResult> AssignTagsAsync(Anecdote entity, List<string> tags);
+        Task<TagsAdditionResult> AddTagsAsync(Anecdote entity, List<string> tags);
     }
 
-    public readonly struct AssignTagsResult
+    public readonly struct TagsAdditionResult
     {
-        public AssignTagsResult(List<string> toCreate, List<string> toDelete)
+        public TagsAdditionResult(List<string> toCreate, List<string> toDelete)
         {
             ToCreate = toCreate;
             ToDelete = toDelete;
         }
 
-        public AssignTagsResult(Exception exception)
+        public TagsAdditionResult(Exception exception)
         {
             Exception = exception;
         }

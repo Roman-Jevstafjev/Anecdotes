@@ -26,12 +26,6 @@ namespace Jevstafjev.Anecdotes.Web.Application.Messaging.AnecdoteMessages.Querie
                 return Result<AnecdoteViewModel>.NotFound("Anecdote is not found");
             }
 
-            var assignResult = await tagService.AssignTagsAsync(entity, new List<string>());
-            if (!assignResult.IsSuccess)
-            {
-                return Result.Invalid(new ValidationError(assignResult.Exception!.Message));
-            }
-
             repository.Delete(entity);
             await unitOfWork.SaveChangesAsync();
 
